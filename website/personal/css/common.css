@@ -1,0 +1,3896 @@
+@import 'reset';
+@import 'variables';
+@import 'utilities';
+
+
+
+/* ===========================================================================
+   Base Styles
+   =========================================================================== */
+
+.condensed { font-family: $font-condensed; }
+
+.white { color: $white; }
+.gold{color: color($award, #{1}); }
+.silver{color: color($award, #{2}); }
+.bronze{color: color($award, #{3}); }
+.lgray { color: $lgray; }
+.mgray { color: $mgray; }
+.dgray { color: $dgray; }
+.ddgray { color: $ddgray }
+.lblue { color: $lblue; }
+.dblue { color: $dblue; }
+.pink { color: $pink; }
+.green, .winner { color: $green !important; }
+.yellow, .draw { color: $yellow !important; }
+.red, .loser { color: $red !important; }
+.orange { color: $orange !important; }
+.llblue { color: $llblue; }
+.ldblue { color: $ldblue; }
+.dpurple { color: $dpurple }
+.winner-unofficial { color: $green; opacity: 0.4; }
+.loser-unofficial { color: $red; opacity: 0.4; }
+
+.bg-white { background-color: $white; }
+.bg-gold{ background-color: color($award, #{1}); }
+.bg-silver{ background-color: color($award, #{2}); }
+.bg-bronze{ background-color: color($award, #{3}); }
+.bg-lgray { background-color: $lgray; }
+.bg-mgray { background-color: $mgray; }
+.bg-dgray { background-color: $dgray; }
+.bg-lblue { background-color: $lblue; }
+.bg-dblue { background-color: $dblue; }
+.bg-green { background-color: $green; }
+.bg-red { background-color: $red; }
+.bg-pink { background-color: $pink; }
+.bg-yellow { background-color: $yellow; }
+.bg-llblue { background-color: $llblue; }
+.bg-ldblue { background-color: $ldblue; }
+.bg-dpurple { background-color: $dpurple; }
+
+
+
+.blurred-min{
+    -webkit-filter: blur(1px);
+    -moz-filter: blur(1px);
+    -o-filter: blur(1px);
+    -ms-filter: blur(1px);
+    filter: blur(1px);
+}
+.blurred-max{
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    -o-filter: blur(10px);
+    -ms-filter: blur(10px);
+    filter: blur(10px);
+
+    pointer-events: none;
+}
+
+
+.hover-opac { @include transition($trans-fast)}
+.hover-opac:hover { opacity: 0.7; }
+.hover-dblue { @include transition($trans-fast)}
+.hover-dblue:hover { color: $dblue; }
+
+.link-text {
+   @include transition($trans-fast);
+
+   font-weight: bold;
+   color: $lblue;
+
+   &:hover { opacity: 0.8; }
+}
+
+
+.logo {
+    @include user-select-none();
+}
+
+.userpic {
+    @include border-radius(100%);
+
+    width: 42px;
+}
+
+.userpic-medium{
+    @include border-radius(100%);
+    width: 32px;
+}
+
+.userpic-small {
+    @include border-radius(100%);
+    width: 24px !important;
+}
+
+.circle_img { @include border-radius(100%); }
+
+.text_link-default {
+    @include transition($trans-fast);
+
+    color: $lblue;
+    text-decoration: none;
+
+    &:hover {
+        opacity: 0.8;
+        color: $lblue;
+    }
+}
+
+.topping_text {
+    font-weight: bold;
+    font-size: 12px;
+    color: $dgray;
+    text-transform: uppercase;
+}
+
+
+.center-block {
+    float: none;
+}
+
+.user-image-small-green{
+    border-radius: 50%;
+    border: 2px solid $color-green-medium;
+    max-width: 40px;
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| Custom checkbox
+|--------------------------------------------------------------------------
+*/
+
+input[type=checkbox].custom_checkbox, input[type=radio].custom_checkbox {
+    position: absolute;
+    opacity: 0;
+}
+
+input[type=checkbox].custom_checkbox + label, input[type=radio].custom_checkbox + label {
+    @include user-select-none();
+    margin:0;
+    display: inline-block;
+}
+
+input[type=checkbox].custom_checkbox + label:before, input[type=radio].custom_checkbox + label:before {
+    content: "\f00c";
+    font-family: FontAwesome;
+    color: transparent;
+    display: inline-block;
+    background-color: $white;
+    border: 1px solid $mgray;
+    border-radius: 3px;
+    margin: -3px 8px 0 0;
+    font-size: 11px;
+    line-height: 16px;
+    height: 16px;
+    width: 16px;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-touch-callout: none;
+    cursor:pointer;
+    transition: all ease .1s;
+}
+
+input[type=checkbox].custom_checkbox:checked + label:before, input[type=radio].custom_checkbox:checked + label:before {
+    color: $white;
+    background-color: $green;
+    border-color: $green;
+}
+
+
+// Tables ie. members/competitors, playerprofile/latestopponets
+.grid-table{
+    margin: 5px 0 10px 0;
+
+    .col{
+        text-align: center;
+
+        &:not(.h1):not(.h2){
+            box-sizing: content-box;
+            height: 45px;
+            padding: 25px 0 !important;
+        }
+
+        .loader{ display:inline; }
+    }
+
+    [class^='h']{
+        border:none !important;
+        line-height: 1.55rem;
+        padding: 0 0 10px 0 !important;
+    }
+
+    >.col>a:not(.card-small), >.col>.holder-dropdown>a{line-height: 45px;}
+
+    .userpic{
+         width:42px;
+         margin-right: 10px;
+    }
+
+    .card-small{
+        line-height: inherit;
+
+        span {
+            font-family: $font-normal;
+            font-size: 13px;
+            font-weight:700;
+            color: $lblue;
+        }
+
+        small{
+            font-family:  $font-normal;
+            font-size:0.9rem;
+            font-weight: 400;
+            text-transform: none;
+        }
+    }
+
+    @for $i from 1 through 10 {
+        &.grid-#{$i} .col:nth-last-child(n+#{$i+1}){  border-bottom: 1px solid $lmgray;  };
+    }
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| Forms
+|--------------------------------------------------------------------------
+*/
+
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.chosen-container.chosen-disabled{
+    background-color: $color-gray-white;
+    opacity: inherit !important;
+
+    .chosen-single{
+        background-color: $color-gray-white;
+        opacity: inherit !important;
+    }
+}
+
+.form-general {
+
+    margin: 30px 0;
+
+
+    input[type=text],
+    input[type=email],
+    input[type=password],
+    input[type=number],
+    select,
+    textarea {
+
+        @include border-radius($border-radius-default);
+
+        appearance: none;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        box-sizing: border-box;
+        font-family: $font-normal;
+        line-height: normal;
+        outline: none;
+        width: 100%;
+        resize: none;
+        background: $color-gray-white;
+        color: $color-gray-dark;
+        border: none;
+
+        &.error {
+            border: 1px solid $red;
+        }
+
+        &.disabled, &:disabled {
+            background: #f4f4f4;
+        }
+
+    }
+
+    select::-ms-expand {
+        display: none;
+    }
+
+    .form-row {
+        box-sizing: border-box;
+        //display: block;
+        margin: 0 0 25px 0;
+        width: 100%;
+
+        &.error p.error { display: block; }
+    }
+
+
+    label {
+        color: $color-gray-dark;
+        font-weight: 400;
+        display: block;
+
+        span.required {
+            color: $red;
+        }
+    }
+
+    .label-with-alert{
+
+        label {
+            display: inline-block;
+        }
+
+    }
+
+    .select-wrapper {
+        position: relative;
+
+        &:after {
+            position: absolute;
+            color: $color-gray-light;
+            font-size: 15px;
+            font-family: FontAwesome;
+            font-weight: bold;
+            right: 20px;
+            content: "\f078";
+            z-index: 10;
+            pointer-events: none;
+            top: calc(50% - 15px);
+            line-height: normal !important;
+        }
+    }
+
+    .chosen-container-single .chosen-single {
+         background-color: #f4f4f4;
+         padding: 15px 20px;
+         border: none;
+    }
+
+}
+
+
+.form-primary {
+    input[type=text],
+    input[type=email],
+    input[type=password],
+    input[type=number],
+    select,
+    textarea {
+        padding: 20px 20px;
+        font-size: 16px;
+        font-weight: 600;
+
+
+        @include xs {
+            padding: 15px;
+        }
+    }
+
+
+    input[type=checkbox] {
+        height: 24px;
+        width: 24px;
+        margin-top: -3px;
+    }
+
+
+    input[type=checkbox].custom_checkbox + label:before {
+        height: 24px;
+        width: 24px;
+        border: 2px solid $color-gray;
+        font-size: 16px;
+        line-height: 20px;
+        margin: -3px 20px 0 0;
+    }
+
+    input[type=checkbox].custom_checkbox:checked + label:before {
+        border: 2px solid $green;
+    }
+
+    .select-wrapper:after { top: calc(50% - 8px); }
+
+    label {
+        font-size: 16px;
+        margin-bottom: 5px;
+        //margin: 25px 0 10px 0;
+    }
+
+
+}
+
+.form-secondary {
+    input, select, textarea{
+        font-weight: 600;
+        font-size: 14px;
+        margin-bottom: 15px;
+        padding: 12px 20px;
+
+        &::placeholder{
+            color: $color-gray;
+        }
+    }
+
+    input[type="submit"].save, button.save{
+        display: inline;
+        color: #fff;
+        background: $green;
+        font-weight: 900;
+        font-size: 14px;
+        padding: 15px 60px;
+        float: right;
+        margin-top: 30px;
+        outline: none;
+
+    }
+
+    label {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+
+}
+
+.form-secondary.form_groups{
+    input{
+        width: 90%;
+
+        @include xs {
+            width: 85%;
+        }
+    }
+
+    i{
+        color: $color-gray-light;
+        font-size: 16px;
+        margin-left: 20px;
+        cursor: pointer;
+    }
+}
+
+
+.helper {
+    padding: 10px 20px;
+    line-height: 1.4em;
+    color: $color-gray;
+    font-size: 14px;
+    margin: 20px 0;
+    display: none;
+
+    &.warning { border-left: 4px solid $orange; }
+
+    &.danger { border-left: 4px solid $red;}
+
+    &.success { border-left: 4px solid $green;}
+
+    &.show { display: block; }
+
+}
+
+
+
+/* Dropdowns
+  ========================================================================== */
+.holder-abs {
+    height: 0;
+    overflow: visible;
+    position: absolute;
+    width: 0;
+}
+
+.holder-dropdown{ position: relative; }
+
+.dropdown {
+    @include user-select-none();
+
+    box-shadow: $shadow-bigblur;
+    color: $dblue;
+    display: none;
+    line-height: initial;
+    overflow: hidden;
+    padding: 10px 0;
+    position: absolute;
+    width: auto;
+    z-index: 999;
+    right: -25px;
+    top: 5px;
+    width: 200px;
+
+    .card-small {
+        display: table;
+        padding: 15px 20px;
+        width: 100%;
+        table-layout: fixed;
+    }
+
+    &.active { display: inherit; }
+
+    a {
+        display: block;
+        padding: 10px 20px;
+        transition: none;
+
+        &:hover {
+            background-color: $lgray;
+        }
+    }
+
+    &.box:not(.active) { display: none; }
+    &.box {
+        padding: 10px 0;
+    }
+
+    .empty_state {
+        padding: 30px 0;
+        text-align: center;
+
+        h3 {
+            font-size: 18px;
+            color: $color-gray-light;
+            margin: 20px 0 0 0;
+            line-height: 1.3em;
+        }
+    }
+}
+
+.dropdown-left {
+    left: 0;
+}
+
+.dropdown_top {
+    border-bottom: 1px solid $mgray;
+    padding: 0 0 10px 13px;
+
+    h2 {
+        font-size: 13px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+}
+
+.dropdown_bottom{
+    border-top: 1px solid $mgray;
+
+    .button {
+        @include border-radius($border-radius-default);
+        float: right;
+        margin: 10px 10px 0 0;
+        user-select: none;
+        border: 1px solid $mgray;
+        font-weight: bold;
+        background-color: #fff;
+        padding: 5px 20px;
+
+
+        i.fa {
+            font-size: 1em;
+            margin-top: 0;
+            padding: 0;
+        }
+    }
+}
+
+
+
+/* Buttons - New
+   ========================================================================== */
+
+.btn {
+    @include border-radius($border-radius-default);
+    @include user-select-none();
+
+    background-color: $white;
+    font-family: $font-normal;
+    font-weight: 700;
+    outline: none;
+    padding: 5px 20px;
+    text-align: center;
+    display: inline-block;
+    border: none;
+    text-decoration: none;
+
+    &:active{ box-shadow: none; }
+
+    &:hover {
+        cursor: pointer;
+        opacity: 0.8;
+    }
+
+}
+
+.btn-xl {
+    font-size: 16px;
+    padding: 20px 50px;
+}
+
+.btn-big {
+    font-size: 14px;
+    padding: 20px 50px;
+}
+
+.btn-medium {
+    font-size: 14px;
+    padding: 15px 30px;
+}
+
+.btn-uppercase {
+    text-transform: uppercase;
+}
+
+.btn-highlight, .btn-success, .btn-disabled {
+    color: $white;
+    border: none;
+
+    &:hover {
+        color: $white;
+    }
+}
+
+.btn-highlight {
+    background-color: $lblue;
+
+    &:hover {
+        background-color: $lblue;
+        border-color: $lblue;
+    }
+
+    &:active {
+        background-color: $green;
+        border-color: $green;
+    }
+}
+
+.btn-success, .btn-primary {
+    background-color: $green;
+    color: white;
+
+    &:hover {
+        background-color: $green;
+        border-color: $green;
+    }
+
+    &:active {
+        background-color: $green;
+        border-color: $green;
+    }
+}
+
+.btn-input-like {
+    background-color: $color-gray-white;
+    color: $color-gray-dark;
+    font-weight: bold;
+    padding: 20px 30px;
+    font-size: 16px;
+}
+
+
+.btn-ldblue {
+    @include border-radius($border-radius-default);
+
+    color: $dblue;
+    font-weight: bold;
+    background: $ldblue;
+    padding: 10px 30px;
+}
+
+.btn-disabled {
+    background-color: $lgray;
+    color: $dgray;
+    cursor:  default;
+
+    &:hover{
+        opacity:1;
+        cursor: default;
+        color: $dgray;
+    }
+
+    &.active{
+        background-color: $red;
+        color:white;
+        cursor:  pointer;
+        &:hover{
+            opacity: 0.8;
+        }
+    }
+}
+
+.btn-opac-disabled {
+    opacity: 0.5;
+    cursor: default;
+
+    &:hover {
+        opacity: 0.5;
+        cursor: default;
+    }
+}
+
+
+.btn-hollow {
+
+    background: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+
+}
+
+
+// Animations
+
+.btn.animating-arrow, .animating-arrow {
+    i.fa {
+        @include transition($trans-fast);
+        position: relative;
+        left: 0;
+    }
+
+    &:hover {
+        i.fa {
+            left: 5px;
+        }
+    }
+
+}
+
+
+
+
+
+/* Boxes
+   ========================================================================== */
+
+
+
+.box-skin {
+    @include border-radius($border-radius-default);
+    border: 1px solid $lmgray;
+    background: white;
+}
+
+
+.box {
+    @extend %box-base;
+    padding: $box-default-padding;
+}
+
+.box-labeled {
+    @extend %box-base;
+    padding: 0 15px;
+}
+
+.box-padded {
+    padding: 20px 25px;
+}
+
+.panel {
+    @extend %box-base;
+}
+
+.panel-heading {
+    font-weight: bold;
+    padding: 15px 25px 12px 20px;
+    line-height: 1.5em;
+    background: transparent;
+    vertical-align: baseline;
+    text-transform: uppercase;
+    color: $green;
+    border-bottom: 1px solid $ldblue;
+
+    border-top-left-radius: $border-radius-default;
+    border-top-right-radius: $border-radius-default;
+}
+
+.panel-body {
+    padding: 20px;
+}
+
+
+.logo-pulse {
+    -webkit-animation-name: logo-pulse;
+    animation-name: logo-pulse;
+}
+
+.logo_loader{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 50px;
+    width: 50px;
+
+    img{
+        height: 100%;
+        width: 100%;
+    }
+}
+
+.register_no_spam{
+    position: absolute;
+    top: -100px;
+}
+
+/*
+ * Karmabar
+ */
+.karmabar-title{
+    color: $ddgray;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.karmabar{
+    width: 100%;
+    height: 80px;
+    position: relative;
+
+    .karma-icon-container{
+        position: absolute;
+        z-index: 2;
+        top: 10%;
+        left: 5%;
+        background: #fff;
+        display: inline-block;
+        box-shadow: 3px 3px 7px 0 rgba(0,0,0,0.15);
+        height: 60px;
+        width: 60px;
+
+        i{
+            color: $orange;
+            font-size: 40px;
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -40%);
+        }
+    }
+
+    .karma-point-container{
+        background: $color-gray-white;
+        position: relative;
+        height: 100%;
+        width: 100%;
+        padding: 10px 0 10px 90px;
+        display: table-cell;
+
+        .karma-point{
+            display: inline-block;
+            height: 100%;
+            width: 60px;
+            text-align: center;
+            border-right: 1px solid $color-gray;
+
+            .point{
+                font-weight: bold;
+                color: $color-green-medium;
+            }
+            img{
+                width: 60%;
+            }
+
+            i{
+                font-size: 40px;
+            }
+
+            &:last-child{
+                border: none;
+            }
+        }
+
+    }
+}
+// #preset-view-popup {
+//     @include xs {
+//         width: 100%;
+//         margin:0;
+//     }
+//
+//     @include md {
+//         width: 800px;
+//     }
+//
+//     a.select-button {
+//         padding: 10px 15px;
+//     }
+// }
+
+/* Popup modal
+   ========================================================================== */
+
+.popup-modal-holder {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 999;
+    overflow: auto;
+}
+
+.popup-modal-wide {
+    width: 690px !important;
+
+    .col-left-race {
+        padding-right: 25px;
+        // margin-right: 25px;
+        border-right: 1px solid $lmgray;
+
+        .button-success {
+            margin: initial;
+        }
+    }
+
+    .add-btn-small {
+        @include border-radius($border-radius-default);
+
+        padding: 21px 10px;
+        text-transform: uppercase;
+        color: white;
+        background: $green;
+        display: block;
+        width: 100%;
+        font-weight: bold;
+        text-align: center;
+        font-size: 15px;
+
+        .loader {
+            circle { fill: white; }
+        }
+    }
+
+    .results-are-saved {
+        text-align: center;
+        margin-top: 30px;
+
+        span {
+            @include border-radius($border-radius-default);
+
+            background: $green;
+            color: white;
+            padding: 5px 15px;
+            font-weight: bold;
+        }
+    }
+}
+
+.popup-modal, .popup-modal-wide {
+    @include border-radius(5px);
+
+    width: 490px;
+    height: auto;
+    background: white;
+    position: relative;
+    top: 0px;
+    transition: all 0.3s;
+    padding: 30px;
+    margin: 50px auto 100px auto;
+
+    h1 {
+        font-weight: normal;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-size: 16px;
+        font-family: $font-normal;
+        font-weight: normal;
+    }
+
+    .number-of-subresults {
+        font-weight: bold;
+
+        .loader {
+            circle { fill: $green; }
+        }
+    }
+
+    label {
+        color: $ddgray;
+        font-weight: normal;
+        font-size: 13px;
+    }
+
+    textarea {
+        max-height: 100px !important;
+        overflow: hidden !important;
+    }
+
+    .button-success {
+        display: table;
+        margin: 0 auto;
+        padding: 15px 88px;
+        text-transform: uppercase;
+    }
+
+    // .col {
+    //     min-height: 110px;
+    //     text-align: center;
+    //     padding: 0;
+    // }
+
+    .userpic-small {
+        @include border-radius(100%);
+
+        width: 45px;
+    }
+
+    .result-tooltip {
+        @include border-radius($border-radius-default);
+
+        background: #f5f8fa;
+        border: 1px solid #e5edf3;
+        color: $dgray;
+        font-size: 12px;
+        position: absolute;
+        top: 79px;
+        padding: 10px;
+        left: 50%;
+        transform: translate(-50%, 0);
+    }
+    .result-tooltip:after, .result-tooltip:before {
+        top: 100%;
+        left: 50%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+    }
+
+    .result-tooltip:after {
+        border-color: rgba(245, 248, 250, 0);
+        border-top-color: #f5f8fa;
+        border-width: 5px;
+        margin-left: -5px;
+    }
+    .result-tooltip:before {
+        border-color: rgba(229, 237, 243, 0);
+        border-top-color: #e5edf3;
+        border-width: 6px;
+        margin-left: -6px;
+    }
+
+    .result-input-holder, .result-input, .comment-box {
+        @include border-radius(5px);
+
+        border: 1px solid #e5edf3;
+        background: $llblue;
+    }
+
+    .result-input-holder {
+        padding: 3px 2px;
+        width: 138px;
+        background: white;
+        color: #e5edf3;
+    }
+
+    .result-holder {
+        font-size: 32px;
+        font-family: $font-normal;
+        font-weight: bold;
+    }
+
+    .result-input {
+        padding: 8px;
+        width: 52px;
+        height: 40px;
+        font-weight: bold;
+        text-align: center;
+        font-size: 20px;
+        color: $dblue;
+
+        @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+            width: 52px;
+            padding: 10px 6px;
+        }
+    }
+
+    .disqualify {
+        @include border-radius(5px);
+
+        color: $red;
+        background: #fbf0f0;
+        padding: 7px 15px;
+        font-weight: bold;
+        display: block;
+        border: 1px solid #f1dcdc;
+        margin-top: 10px;
+    }
+
+    .comment-box {
+        width: 358px;
+        min-height: 55px;
+        position: relative;
+        margin-bottom: 10px;
+        margin-top: 7px;
+        text-align: left;
+
+        i {
+            vertical-align: middle;
+            float: right;
+        }
+    }
+
+    .comment-box:after, .comment-box:before {
+        left: 52px;
+        bottom: 100%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+    }
+
+    .comment-box:after {
+        border-color: rgba(245, 248, 250, 0);
+        border-bottom-color: #f5f8fa;
+        border-width: 10px;
+        margin-left: -10px;
+    }
+
+    .comment-box:before {
+        border-color: rgba(229, 237, 243, 0);
+        border-bottom-color: #e5edf3;
+        border-width: 11px;
+        margin-left: -11px;
+    }
+
+    .right-arrow:before, .right-arrow:after {
+        left: auto;
+        right: 42px;
+    }
+
+    .score {
+        font-size: 32px;
+        font-weight: bold;
+    }
+
+    .giveup-match {
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+
+    .title {
+        font-size: 16px;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 5px;
+    }
+
+    .subtitle {
+        margin-bottom: 7px;
+        color: $dgray;
+        font-weight: bold;
+        font-size: 12px;
+    }
+
+    .input-container {
+        position: relative;
+        width: 100%;
+
+        .unit {
+            position: absolute;
+            display: block;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 25px;
+            font-size: 18px;
+            color: #d0dae1;
+            padding-left: 5px;
+        }
+    }
+
+    .race-input {
+        @include border-radius($border-radius-default);
+
+        background: $llblue;
+        border: none;
+        width: 100%;
+        min-height: 50px;
+        padding: 10px 55px 10px 10px;
+        font-weight: bold;
+        color: $dblue;
+
+        &::-webkit-input-placeholder { color: $lmgray; }
+        &:-moz-placeholder { color: $lmgray; }
+        &::-moz-placeholder { color: $lmgray; }
+        &:-ms-input-placeholder { color: $lmgray; }
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .time-field { padding: 10px; }
+
+    .race-date-select {
+        display: none;
+        &.active { display: block; }
+    }
+
+    select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        overflow: hidden;
+    }
+
+    select::-ms-expand {
+        display: none;
+    }
+
+    .participation-holder {
+        @include border-radius($border-radius-default);
+
+        width: 100%;
+        text-transform: uppercase;
+        font-size: 15px;
+        color: white;
+        font-weight: bold;
+        padding: 20px;
+        margin-bottom: 15px;
+
+        .checkbox {
+            @include border-radius($border-radius-default);
+
+            background: white;
+            padding: 5px;
+            margin: 0 10px 0 0;
+            display: inline-block;
+        }
+    }
+}
+
+.popup-modal-body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.popup-modal-close {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    color: $mgray;
+    font-size: 15px;
+    cursor: pointer;
+    z-index: 999;
+
+    &:hover {
+        color: $dgray;
+    }
+}
+
+.show-popup-modal {
+    top: 50px;
+}
+
+
+
+
+#tournamentSettings_sport_chosen {
+
+    .chosen-single {
+        div {
+            b {
+                background: none !important;
+            }
+
+        }
+    }
+
+    .chosen-results {
+
+        color: $ddgray;
+
+        li {
+            &:first-of-type {
+                font-style: italic;
+                color: $dgray;
+                &.highlighted{
+                    color: $white;
+                }
+            }
+        }
+    }
+}
+
+
+.markdown_help {
+    .dropdown {
+        @include user-select-all();
+
+        width: 300px;
+        padding: 20px;
+        position: relative;
+        font-size: 13px;
+        top: 10px;
+        right: 50px;
+
+        h2 {
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+
+        p {
+            margin: 20px 0;
+        }
+
+        strong {
+            font-weight: 700;
+            display: block;
+        }
+    }
+}
+
+
+
+
+
+
+/* Nav
+   ========================================================================== */
+
+.header-nav {
+    background-color: #fff;
+    border-bottom: 1px solid $mgray;
+    top: 0;
+    width: 100%;
+    position: fixed;
+    z-index: 999;
+    height: 70px;
+    font-size: 14px;
+    line-height: 1.3;
+
+
+    .container {
+        height: 100%;
+
+        >ul > li > a, .header-nav-sm ul li a {
+            @include user-select-none();
+            @include transition($trans-fast);
+            line-height: normal;
+            display: block;
+            box-sizing: border-box;
+            padding: 25px 20px 0 20px;
+            height: 100%;
+
+            &.karma-button {
+                padding-top: 14px;
+            }
+            &.notif-default {
+                padding-top: 26px;
+            }
+            &.user-player-profile-button {
+                padding-top: 14px;
+            }
+        }
+
+        > ul, .header-nav-sm ul {
+            height: 100%;
+
+            .edit-angle-dropdown {
+
+                a {
+                    padding: 24px 0 0 0;
+                }
+
+                 .profile-dropdown {
+                    top: 0px;
+
+                    a {
+                        padding: 10px 20px;
+                    }
+                }
+            }
+        }
+    }
+
+
+    li {
+        height: 100%;
+    }
+
+    .nav_option {
+
+        font-size: 14px;
+
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+
+    .nav-text {
+        font-size: 13px;
+        margin-top: 12px;
+        display: inline-block;
+    }
+
+    .nav-btn{
+        -webkit-border-top-left-radius: 5px;
+        -webkit-border-bottom-left-radius: 5px;
+        -moz-border-radius-topleft: 5px;
+        -moz-border-radius-bottomleft: 5px;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        background:$lgray;
+        padding:0px 20px;
+        margin-top: 15px;
+        margin-right: 2px;
+        height: 35px;
+
+        span, strong {
+            line-height:35px;
+            text-transform:none;
+            font-family: $font-normal;
+            font-size: 13px;
+        }
+
+        .userpic {
+            @include border-radius(7px);
+
+            vertical-align: middle;
+            width: 30px;
+            margin: 0px 7px 2px 2px;
+        }
+    }
+
+    .btn-with-org-picture {
+        display: inline-block;
+        padding: 14px 0 0 0;
+
+        .org_picture {
+            vertical-align: middle;
+        }
+
+        .nav-text {
+            margin-left: 8px;
+        }
+    }
+
+    .nav-btn-arrow {
+        -webkit-border-top-right-radius: 5px;
+        -webkit-border-bottom-right-radius: 5px;
+        -moz-border-radius-topright: 5px;
+        -moz-border-radius-bottomright: 5px;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        padding:7px 5px;
+        margin-top: 15px;
+        height:35px;
+        background:$lgray;
+    }
+
+    .logo {
+        padding: 23px 0 0 0;
+
+        a {
+            display: block;
+        }
+
+        img {
+            width: 140px;
+            height: 24px;
+        }
+    }
+
+    .header-nav-sm .logo { padding: 0;}
+
+
+    .dot {
+        padding: 27px 20px 0 20px;
+    }
+
+    .organisations {
+        display: inline-block;
+
+        .org_name {
+            display: inline-block;
+            padding: 27px 0 0 0;
+        }
+    }
+
+    .organisations:hover {
+        opacity: 0.6;
+    }
+
+    .dropdown-sign {
+        @include border-radius($border-radius-default);
+
+        font-size: 8px;
+        color: $dgray;
+        padding: 3px;
+        margin-top: 4px;
+        background: $lmgray;
+    }
+
+    .user-player-profile,
+    .edit-angle-dropdown,
+    .tips,
+    .notification-sign,
+    .wishlist-sign,
+    .karma-in-nav {
+        float: right;
+    }
+
+    .user-player-profile{
+        .userpic {
+            @include border-radius(5px);
+            width: 26px;
+            height: 26px;
+            margin: 8px 5px 0 0;
+            vertical-align: top;
+            padding: 0;
+        }
+
+        strong {
+            display: inline-block;
+            vertical-align: top;
+        }
+    }
+
+    >ul>li>a:not(.logo):hover {
+        opacity:0.6;
+    }
+
+    .karma-button {
+
+        .level-container-image {
+            @include border-radius(3px);
+
+            background: $lgray;
+            float: left;
+            width: 24px;
+            height: 24px;
+            overflow: hidden;
+            text-align: center;
+            margin: 10px 10px 0 0;
+
+            img {
+                margin-top: 2px;
+            }
+        }
+    }
+
+    .karma-dropdown {
+        right: -70px;
+        top: 0px;
+        width: 300px;
+        padding: 0 13px;
+
+        h2 {
+            display: inline-block;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .your-karma {
+            border-bottom: 1px solid $mgray;
+
+            .karma-progressbar-container {
+                margin-top: 0;
+
+                a:hover {
+                    opacity: 0.8;
+                    background-color: #fcbf95;
+                }
+            }
+        }
+
+        .your-karma, .karma-events {
+            padding: 10px 0;
+        }
+
+        .karma-events {
+
+            li {
+                margin-bottom: 7px;
+            }
+
+            span {
+                color: $orange;
+                font-weight: bold;
+                float: right;
+            }
+
+            a {
+                display: inline-block;
+                padding: 0;
+                margin: 15px 0 7px 0;
+
+                &:hover {
+                    background-color: inherit;
+                }
+            }
+        }
+    }
+
+    .active_nav_option {
+        font-weight: bold;
+        color: $green;
+        border-bottom: 2px solid $green;
+    }
+
+    .left-border {
+        border-left: 1px solid $lmgray;
+    }
+}
+
+
+.colorful-btn {
+    @include border-radius($border-radius-default);
+
+    padding: 17px;
+    border: none;
+
+    i {
+        margin-right: 7px;
+        font-size: 18px;
+        vertical-align: middle;
+    }
+
+    strong {
+        color: white;
+        text-transform: uppercase;
+        font-size: 13px;
+    }
+
+    span {
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+    }
+}
+
+//  KARMA PROGRESSBAR
+
+.karma-progressbar-container {
+    position: relative;
+    height: 50px;
+    margin: 10px 0;
+}
+
+
+
+.karma-progressbar {
+    background: #fcaf7b;
+    height: 50px;
+    margin-top: 0;
+    display: block;
+
+    i {
+        color: #d3824c;
+    }
+
+    .progressbar-level {
+        @include border-radius($border-radius-default);
+
+        position: absolute;
+        height: 100%;
+        background: #fcc77b;
+        top: 0;
+        left: 0;
+    }
+
+    .progressbar-text {
+        z-index: 10;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 15px;
+    }
+}
+
+.notification-sign .dropdown,
+.tournaments .dropdown {
+    right: -55px;
+    top: 0px;
+    width: 350px;
+    padding: 15px 0;
+
+    h3 {
+        padding: 20px;
+        text-align: center;
+    }
+}
+
+.tournaments .dropdown {
+    left: -105px;
+    width: 280px;
+    max-height: 80vh;
+    overflow: auto;
+
+    .card-small i {
+        color: $mgray;
+        font-size: 2em;
+        margin-top: 5px;
+    }
+}
+
+.dropdown {
+    right: -25px;
+    top: 15px;
+    width: 200px;
+
+    a {
+        display: block;
+        padding: 10px 20px;
+        transition: none;
+
+        &:hover {
+            background-color: $lgray;
+        }
+    }
+}
+
+/* Notifications
+   ========================================================================== */
+
+.notifs .active { display: inline-block; }
+
+.notifs.holder-dropdown>a {
+    position: relative;
+    line-height: 1rem;
+    padding: 10px;
+    margin-top: 15px;
+    height:35px;
+
+    .notif-sign{
+        margin-top: 1px;
+        font-size: 12px;
+        vertical-align: middle;
+    }
+}
+
+.notif-number {
+    font-size: 9px;
+    font-weight: 600;
+    vertical-align: middle;
+    margin-left: 3px;
+    display: none;
+    position: absolute;
+    top: 23px;
+    left: 26px;
+
+}
+
+.notif-alert {
+    @include border-radius(8px);
+
+    background: #fc4949 !important;
+    color: white !important;
+    padding: 0 3px;
+}
+
+.notification-sign .dropdown {
+    .dropdown_bottom {
+        background-color: $white;
+        position: relative;
+        z-index: 5;
+        padding-bottom: 10px;
+    }
+
+    .card-small {
+
+        background: $llblue;
+
+        i {
+            font-size: 1em;
+            height: auto;
+            width: auto;
+            margin-right: 0;
+        }
+        .userpic { width: 45px; }
+    }
+
+    .loader {
+        width: 20px;
+        margin: 30px auto;
+        display: block;
+    }
+}
+
+#c-menu--push-right {
+    .card-small {
+
+        background: $llblue;
+
+        i {
+            font-size: 2.88rem;
+            height: 2.88rem;
+            width: 2.88rem;
+            vertical-align: baseline;
+        }
+        .userpic { width: 45px; }
+    }
+
+    .loader {
+        width: 20px;
+        margin: 30px auto;
+        display: block;
+    }
+}
+
+header .dropdown .card-small,
+#c-menu--push-right .card-small {
+
+    @include transition($trans-fast);
+
+    border-top: none;
+    border-bottom: 1px solid $lmgray;
+    font-size: 13px;
+
+    &:last-of-type { border:none; }
+
+    span {
+        display: table-cell;
+        width: 82%;
+    }
+
+    strong { font-weight:700; }
+
+    &:hover { opacity:0.8; }
+
+    &.seen { background-color: white; }
+
+    small
+    {
+        padding-top:3px;
+        display: block;
+        font-size: 12px;
+        color: $color-gray-light;
+    }
+
+    img.logo{ padding: 3px 4px 3px 3px; }
+
+    em{
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+    }
+}
+
+.listOfNotifications{
+    max-height: 550px;
+    overflow: auto;
+
+    a.card-small strong {
+        font-weight: normal;
+    }
+
+    .card-small img {
+        margin: 0;
+    }
+}
+
+.noti_rank {
+    font-weight: bold;
+    font-size: 14px;
+    color: #ffffff;
+    padding: 10px 5px;
+    background: $lblue;
+    margin-top: 3px;
+    display: inline-block;
+    border-radius: 3px;
+}
+
+
+/* Navigation bootstrap
+   ========================================================================== */
+
+nav {
+    font-size: 13px;
+
+    .h2 {
+        margin-left: 12px;
+        font-size: 1rem;
+        font-family: $font-normal;
+    }
+}
+
+.navbar {
+    margin-bottom: 30px;
+    border: 0;
+    border-radius: 0;
+}
+
+.navbar-collapse {
+    padding: 0;
+}
+
+.navbar-default {
+    background-color: $ldblue;
+    font-size: 14px;
+
+    .navbar-nav {
+        padding: 10px 0;
+    }
+
+    .navbar-nav > li {
+        padding: 0 30px;
+
+        span {
+            line-height: 30px;
+        }
+    }
+
+    .navbar-nav > li:first-child {
+        border-right: 1px solid $mgray;
+        padding-left: 0;
+    }
+
+    .navbar-nav > li > a {
+        color: $color-gray-dark;
+        padding: 0;
+
+        &:hover {
+            opacity: 0.6;
+        }
+    }
+
+    .navbar-nav > .active > a {
+        color: $color-gray-black;
+        font-weight: bold;
+        background-color: inherit;
+
+        &:hover {
+            color: $dblue;
+            opacity: 0.6;
+            background-color: inherit;
+        }
+    }
+
+    .navbar-nav > li > a > span > img {
+        //width: 40px;
+        vertical-align: middle;
+    }
+
+    .navbar-nav > li > span {
+        vertical-align: middle;
+    }
+
+    .navbar-right {
+        margin-right: 0;
+
+        li {
+            border-right: 0 !important;
+            padding-right: 0;
+        }
+    }
+
+    .nav_userpic {
+        width: 24px;
+        margin-right: 10px;
+        @include border-radius($border-radius-default);
+    }
+}
+
+.nav_challenges_btn {
+    display: inline-block;
+    margin-right: 15px;
+    font-weight: 600;
+
+    i {
+        font-weight: bold;
+        font-size: 16px;
+    }
+}
+
+
+.btn-edit-profile {
+    @media screen and (min-width: 768px) {
+        border: 1px solid #dae0e2;
+        padding: 7px 20px !important;
+        background-color: $llblue;
+        @include border-radius(5px);
+        display: inline !important;
+
+        &:hover {
+            background-color: $llblue !important;
+            opacity: 0.6 !important;
+        }
+
+        span {
+            color: $ddgray;
+        }
+    }
+}
+
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Footer
+|--------------------------------------------------------------------------
+*/
+
+footer.default {
+    background: $color-gray-white;
+    padding: 45px 0 40px 0;
+    margin-top: 50px;
+
+
+    .social-icons {
+        margin-top: 20px;
+
+        a{
+            img{
+                height: 15px;
+                width: 15px;
+                margin: 0 15px 0 0;
+                opacity: 0.5;
+            }
+        }
+    }
+
+    h2 {
+        font-weight: bold;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        font-size: 14px;
+    }
+
+    p {
+        color: $color-gray;
+        font-size: 13px;
+        margin-top: 5px;
+    }
+
+    ul li {
+        padding: 5px 0;
+        font-size: 14px;
+        line-height: 1.6em;
+
+        a {
+            color: $color-gray-dark;
+
+            &:hover { opacity: 0.7; }
+        }
+    }
+
+}
+
+
+
+
+
+
+
+
+/***********************************************************
+ * New grid, ngrid-X has X columns, col-Y is Y columns wide
+ *   1 <= X <= 12;  1 <= Y <= X
+ *
+ * Example:
+ *                    ngrid-12
+ * | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10| 11| 12|
+ * ┌---------------------------┬-------------------┐
+ * |                           |                   |
+ * |           col-7           |       col-5       |
+ * |                           |                   |
+ *                      .  .  .
+ */
+$colspacing: 12px;
+%ngrid-col {
+    @extend .clearfix;
+    padding-left: $colspacing / 2;
+    padding-right: $colspacing / 2;
+    float: left;
+}
+
+@for $i from 1 through 12 {
+    .ngrid-#{$i} {
+        @extend .clearfix;
+
+        display: block;
+
+        &:not(.margin-0) {
+            margin-left: -($colspacing / 2);
+            margin-right: -($colspacing / 2);
+            width: calc(100% + #{$colspacing});
+        }
+        &.margin-0 {
+            margin: 0;
+            width: 100%;
+        }
+        @for $j from 1 through $i {
+            & > .col-#{$j} {
+                @extend %ngrid-col;
+                width: percentage($j / $i);
+            }
+
+            @for $k from 1 through 6 {
+                &.rowspacing-#{$k * 5} > .col-#{$j} {
+                    margin-bottom: #{$k * 5}px;
+                }
+            }
+        }
+
+        & > .col {
+            @extend %ngrid-col;
+            width: percentage(1 / $i);
+        }
+
+        .separator {
+            border-left: 1px solid $ldblue;
+        }
+
+        @for $j from 1 through 6 {
+            &:not(.margin-0).rowspacing-#{$j * 5} {
+                margin-bottom: -#{$j * 5}px;
+            }
+
+            &.rowspacing-#{$j * 5} > .col {
+                margin-bottom: #{$j * 5}px;
+            }
+        }
+    }
+
+    .ngrid-flex .col-#{$i} { display: flex; }
+}
+
+.ngrid-flex, .ngrid-flex .col { display: flex; }
+
+// fgrid: Flex grid
+$fgrid-multiplier: 100;
+.fgrid {
+    display: flex;
+
+    @for $i from 1 through 100 {
+        & > .col-#{$i} {
+            flex: $i * $fgrid-multiplier;
+            margin-left: $colspacing / 2;
+            margin-right: $colspacing / 2;
+
+            &:first-child { margin-left: 0; }
+
+            &:last-child { margin-right: 0; }
+        }
+
+        &.fgrid-flex > .col-#{$i} {
+            display: flex;
+        }
+    }
+
+    & > .col {
+        flex: $fgrid-multiplier;
+        margin-left: $colspacing / 2;
+        margin-right: $colspacing / 2;
+
+        &:first-child { margin-left: 0; }
+
+        &:last-child { margin-right: 0; }
+    }
+
+    &.fgrid-flex > .col {
+        display: flex;
+    }
+}
+
+/* Settings forms
+   ========================================================================== */
+.settings-form{
+
+    h3{
+        font-weight: 900;
+        font-size: 24px;
+        display: inline-block;
+        color: #333;
+        padding: 30px 0;
+    }
+
+    h4{
+        font-size: 16px;
+        font-weight: 300;
+        color: #666;
+        display: block;
+    }
+
+    h5{
+        font-size: 16px;
+        font-weight: 900;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    img.orgpic{
+        display: inline-block;
+        height: 100px;
+        width: 100px;
+        border-radius: 4px;
+        margin: 10px 30px 30px 0;
+    }
+
+      .button_container{
+        display: inline-block;
+        transform: translateY(-70px);
+
+        .button.filePicker{
+            border: 2px solid #DDD;
+            border-radius: 8px;
+            font-weight: 900;
+            font-size: 16px;
+            color: #666;
+            padding: 12px 18px;
+        }
+    }
+
+}
+
+/* ===========================================================================
+   Create new challenge process
+   =========================================================================== */
+
+   // Button
+    .btn-grey {
+        @include border-radius(3px);
+        background: $dgray;
+        padding: 10px 30px;
+        color: $white;
+        font-size: 0.8em;
+        font-weight: bold;
+        text-transform: uppercase;
+
+        &:hover {
+            cursor: pointer;
+            filter: brightness(107%);
+            -webkit-filter: brightness(107%);
+        }
+    }
+
+
+    .preset-view-popup {
+
+        background: #fff;
+        font-size: 15px;
+        margin: 50px auto;
+        padding: 30px 20px 50px 20px;
+        @include border-radius($border-radius-default);
+        width: 765px;
+
+        h1 {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        h3 {
+            font-size: 16px;
+            font-weight: bold;
+            color: $dblue;
+            margin-bottom: 15px;
+        }
+
+        .popup_close {
+            cursor: pointer;
+            float: right;
+        }
+
+        .formats {
+            a {
+                color: $lblue;
+                display: block;
+                margin-bottom: 8px;
+            }
+        }
+
+        .button {
+            display: inline-block;
+            font-size: 12px;
+            margin-top: 30px;
+            padding: 10px 40px;
+            float: right;
+        }
+
+        .summary {
+            border-bottom: 1px solid $mgray;
+            padding-bottom: 30px;
+        }
+
+        .filters {
+            color: $mgray;
+            margin-bottom: 10px;
+
+            li {
+                display: inline;
+            }
+        }
+
+        .separator {
+            border-bottom: 1px solid $mgray;
+            border-top: 1px solid $mgray;
+        }
+
+        .section {
+            padding: 25px 0 30px 0;
+
+            .premium {
+                color: #75a7b1;
+                float: right;
+                display: inline-block;
+                text-transform: uppercase;
+                font-size: 11px;
+                background: #d8edf1;
+                padding: 0 15px;
+                @include border-radius(3px);
+            }
+
+            .bj_logo {
+                width: 150px;
+            }
+
+            .website_link {
+                color: $mgray;
+            }
+        }
+
+        .rules {
+            padding-top: 25px;
+        }
+    }
+
+    .select-sport-nav {
+
+        background: #fff;
+        margin-top: 70px;
+
+        .right-border {
+            border-right: 1px solid $lmgray;
+        }
+
+        ul li {
+            float: left;
+            padding: 15px 20px 11px 25px;
+        }
+
+        ul:after {
+            content: " ";
+            clear: both;
+            display: block;
+        }
+
+        .dropdown-sign {
+            color: $green;
+            margin-left: 17px;
+            font-weight: bold;
+        }
+
+        .search-input {
+            border: 1px solid transparent;
+
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+
+
+    .select-sport {
+        border-top: 1px solid $lmgray;
+        padding-top: 20px;
+
+        .fa-star, .fa-star-half-o {
+            color: $green;
+        }
+
+        .sports {
+            padding-bottom: 90px;
+
+            a {
+                display: block;
+
+                &:hover {
+                    opacity: 0.6;
+                }
+            }
+
+            img {
+                margin-top: 50px;
+                width: 100%;
+            }
+        }
+
+        .sport-name {
+            font-weight: bold;
+            font-size: 0.9em;
+            display: block;
+            margin: 20px 0 6px 0;
+        }
+
+        .sport-infos {
+            display: block;
+            color: $mgray;
+            margin-bottom: 8px;
+            font-size: 0.8em;
+        }
+
+        .rating {
+            margin-right: 10px;
+            font-size: 0.7em;
+        }
+
+        .usage {
+            font-size: 0.6em;
+        }
+
+        section.sport {
+            border: 1px solid $dgray;
+            min-height: 230px;
+            padding: 15px;
+
+            img {
+                width: 100%;
+                max-height: 130px;
+                min-height: 130px;
+                height: 130px;
+                padding: 30px 35%;
+                object-fit: contain;
+            }
+        }
+
+        .navigation {
+            border-top: 1px solid $lmgray;
+            padding: 20px 0 100px 0;
+
+            .number-of-games {
+                font-size: 0.9em;
+                font-weight: bold;
+                margin-bottom: 25px;
+            }
+
+            .page {
+                font-size: 0.9em;
+                color: $green;
+                padding: 5px 7px;
+                border: 1px solid $mgray;
+                font-weight: bold;
+                margin: 0 3px;
+            }
+
+            .dots {
+                margin: 0 7px;
+            }
+        }
+
+        .button-container {
+            text-align: right;
+
+            a {
+                display: inline-block;
+                margin: 30px 30px 0 0;
+            }
+        }
+    }
+
+
+    .create-new-challenge-process {
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        background: $white;
+        border-top: 1px solid $lmgray;
+        border-bottom: 1px solid $lmgray;
+
+        .active {
+            border-bottom: 2px solid $green;
+            color: $dblue;
+            font-weight: 600;
+        }
+
+        .disable {
+            pointer-events: none;
+            opacity: 0.2;
+            cursor: default;
+            color: red;
+        }
+
+
+        ul {
+            height: 100%;
+            display: table;
+            width: 100%;
+            text-align: center;
+        }
+
+        li {
+            display: table-cell;
+            padding: 25px 50px 20px 50px;
+            color: $mgray;
+            border-left: 1px solid $lmgray;
+
+            &:first-child {
+                border-left: none;
+            }
+
+            span {
+                display: inline-block;
+                padding: 2px 5px;
+                font-size: 14px;
+            }
+        }
+
+        .next-btn, .back-btn {
+            font-weight: bold;
+            font-size: 0.9em;
+            padding: 25px 50px 20px 50px;
+            color: $white;
+            text-transform: uppercase;
+            position: absolute;
+            height: 100%;
+
+            &:hover {
+                opacity: 0.6;
+            }
+        }
+
+        .next-btn {
+            background: $green;
+            right: 0;
+            top: 0;
+        }
+
+        .back-btn {
+            background: $dgray;
+            top: 0;
+        }
+    }
+
+    .create_challenge_title {
+        h1 {
+            font-size: 26px;
+            text-transform: none;
+            margin-top: 10px;
+            color: #4d4d4d;
+        }
+
+        p {
+            color: $dgray;
+            line-height: 1.4;
+            font-size: 15px;
+        }
+    }
+
+    .create-challenge-step {
+        padding: 70px 0 80px 0;
+
+        h4 {
+            font-weight: bold;
+            font-size: 16px;
+            margin: 0 0 15px 0;
+        }
+
+        h5 {
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        label {
+            display: block;
+            vertical-align: top;
+            color: #4d4d4d;
+            margin-bottom: 5px;
+
+            &.display-inline-block {
+                display: inline-block;
+            }
+
+        }
+
+        // a {
+        //     // color: $lblue;
+        //     // text-decoration: underline;
+        //
+        //     &.button {
+        //         color: $white;
+        //         text-decoration: none;
+        //     }
+        // }
+
+        ::placeholder {
+            color: $mgray;
+        }
+
+        ::-webkit-input-placeholder {
+            color: $mgray;
+        }
+
+        ::-moz-placeholder {
+            color: $mgray;
+        }
+
+        :-moz-placeholder {
+            color: $mgray;
+        }
+
+        :-ms-input-placeholder {
+            color: $mgray;
+        }
+
+    }
+
+    .select-sport-2nd-step {
+
+        form {
+            margin: 50px 0 20px 0;
+        }
+
+        .chosen-single {
+            span {
+                font-size: 15px;
+            }
+        }
+
+        span {
+            font-size: 15px;
+            color: $dgray;
+        }
+
+        .chosen-container-single .chosen-single {
+            height: 56px;
+            line-height: 53px;
+        }
+
+        .chosen-container-single .chosen-single:before {
+            content: "\f078";
+            font-family: FontAwesome;
+            right: 20px;
+            position: absolute;
+            top: 0;
+            color: $dgray;
+        }
+
+    }
+
+
+    .select-preset {
+
+        .filters_menu {
+
+            font-size: 15px;
+            margin: 30px 0;
+
+            li {
+                float: left;
+                display: inline-block;
+            }
+
+            a {
+                text-decoration: none;
+                color: $lblue;
+
+                &.active{
+                    font-weight: bold;
+                }
+            }
+
+            .slash {
+                margin: 0 7px;
+                color: $lblue;
+            }
+
+            .separator {
+                margin: 0 10px;
+            }
+        }
+
+        .tournament-preset {
+            margin-top: 55px;
+            font-size: 15px;
+
+            small {
+                color: $dgray;
+                font-size: 13px;
+                display: block;
+                margin-top: 10px;
+                text-align: center;
+            }
+
+            p {
+                margin-bottom: 20px;
+            }
+
+            .variant_image {
+                width: 200px;
+            }
+
+            .preset_details {
+                margin-left: 40px;
+            }
+
+            .preset_name {
+                margin-top: 10px;
+                font-weight: bold;
+                font-size: 20px;
+                color: $ddgray;
+            }
+
+            .filters {
+                color: $dgray;
+            }
+
+            .preset_info {
+                margin: 25px 0 10px 0;
+            }
+
+            .button_container {
+                a {
+                    margin-top: 30px;
+                }
+            }
+        }
+
+        .button_container {
+            text-align: center;
+
+            a {
+                text-decoration: none;
+                display: inline-block;
+            }
+        }
+
+        .create_custom_challenge_stripe {
+            padding: 30px 0;
+            border-top: 2px solid $mgray;
+            border-bottom: 2px solid $mgray;
+            margin: 50px 0 70px 0;
+
+            p {
+                font-size: 15px;
+            }
+        }
+    }
+
+    .customize-challenge {
+
+        input[type=checkbox] {
+            position: relative;
+        }
+
+        //Checkbox
+        #tournamentSettings_isAutomaticStartStop:before {
+            font-size: 1.4em;
+            color: $lmgray;
+            background-color: #FFFFFF;
+            height: 100%;
+            width: 100%;
+            font-family: FontAwesome;
+            display: inline-block;
+            content:"\f096";
+            letter-spacing: 10px;
+        }
+
+        #tournamentSettings_isAutomaticStartStop:checked:before{
+            font-size: 1.2em;
+            font-family: FontAwesome;
+            display: inline-block;
+            content:"\f14a";
+            letter-spacing: 5px;
+            color: $green;
+        }
+
+        .select {
+            position: relative;
+            overflow: hidden;
+            position: relative;
+            display: block;
+            width: 65%;
+        }
+
+        .select select {
+            padding: 15px;
+           -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            position: relative;
+            width: 100%;
+        }
+
+        .select:after {
+            content:"\f107";
+            font-family: FontAwesome;
+            color: $mgray;
+            position: absolute;
+            right: 20px;
+            top: 18px;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+
+        .form-row {
+            margin: 40px 0;
+
+
+            span.required {
+                color: $dgray;
+            }
+
+            input, textarea, select {
+                @include border-radius($border-radius-default);
+                border: 1px solid $lmgray;
+                display: block;
+                line-height: normal;
+           }
+
+            input {
+                padding: 15px;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+                width: 65%;
+            }
+
+            textarea {
+                padding: 20px;
+                width: 100%;
+                height: 160px;
+            }
+        }
+
+        .fa-info-circle {
+            color: $dgray;
+        }
+
+
+        .selected-variant {
+            border-top: 1px solid $lmgray;
+            border-bottom: 1px solid $lmgray;
+            padding: 15px 0;
+            margin-top: 50px;
+
+            img {
+                float: left;
+                display: inline-block;
+            }
+
+            h5 {
+                font-size: 0.9em;
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
+
+            p {
+                font-size: 0.8em;
+            }
+        }
+
+        .next-to-players-btn {
+            display: inline-block;
+            float: right;
+            background: $green;
+            padding: 14px 20px 14px 30px;
+            text-transform: uppercase;
+            color: #fff;
+            font-size: 13px;
+            font-weight: bold;
+            margin-top: 5px;
+
+            @include border-radius($border-radius-default);
+
+            i {
+                margin-left: 25px;
+                font-size: 1.1em;
+            }
+
+            &:hover {
+                // opacity: 0.6;
+                filter: brightness(107%);
+                -webkit-filter: brightness(107%);
+            }
+        }
+
+        .main-details, .game-mode {
+            padding: 45px 0 50px 0;
+            border-bottom: 1px solid $lmgray;
+        }
+
+        .individuals-or-teams {
+            padding: 45px 0 0 0;
+        }
+
+        .sport-icon-select, .sport-icon-selection {
+
+            a {
+                @include border-radius($border-radius-default);
+                @include transition($trans-fast);
+
+                border: 1px solid $mgray;
+                padding: 7px;
+                display: inline-block;
+                margin: 8px 7px 0 0;
+                vertical-align: top;
+
+
+                &:hover {
+                    border: 1px solid $dblue;
+                    color: $dblue;
+                }
+
+                &.active {
+                    box-shadow: inset 0 0 0px 1px $green;
+                    border: 1px solid $green;
+                }
+
+                &.one-sport-icon {
+                    font-size: 22px;
+
+                    img {
+                        width: 30px;
+                        height: 30px;
+                    }
+                }
+            }
+
+            label {
+                display: block;
+            }
+
+            .sport-icon-change {
+                border: 1px solid $mgray;
+                font-size: 0.9em;
+                font-weight: bold;
+                color: $ddgray;
+                margin: 20px 0;
+                padding: 10px 20px;
+            }
+        }
+
+        .sport-icon-selected {
+            @include border-radius(4px);
+
+            padding: 10px;
+            width: 65px;
+            height: 65px;
+            font-size: 40px;
+            color: $dgray;
+            border: 1px solid $lmgray;
+            float: left;
+            margin-right: 17px;
+            margin-top: 5px;
+            text-align: center;
+
+            img {
+                width: 36px;
+                height: 36px;
+                margin-top: 3px;
+            }
+        }
+
+        .sport-icon-selection {
+           display: none;
+           margin-top: 20px;
+        }
+
+        .more-details-btn {
+           color: $lblue;
+           font-size: 14px;
+
+           &:hover {
+               opacity: 0.6;
+           }
+        }
+
+        a.more-details-btn {
+            font-weight: bold;
+        }
+
+        .more-details {
+            display: none;
+        }
+
+        .option-box-container {
+            width: 100%;
+            box-sizing: border-box;
+
+            label {
+                display: inline-block;
+                width: 50%;
+            }
+
+            em {
+                margin-bottom: 8px;
+            }
+
+            .active {
+                color: $dblue;
+
+                -moz-box-shadow: inset 0 -4px 0 $green;
+                -webkit-box-shadow: inset 0 -4px 0 $green;
+                box-shadow: inset 0 -4px 0 $green;
+
+                i, em {
+                    color: $green;
+                }
+
+                em {
+                    font-weight: bold;
+                }
+            }
+        }
+
+        .option-box {
+            box-sizing: border-box;
+            color: $mgray;
+            padding: 25px 20px;
+            display: block;
+
+            i {
+                font-size: 32px;
+                margin: 15px 25px 15px 10px;
+                float: left;
+            }
+
+            em {
+               color: $mgray;
+               display: block;
+            }
+
+            span {
+                font-size: 14px;
+            }
+        }
+
+        .option-box-left {
+            border: 1px solid $lmgray;
+        }
+
+        .option-box-right {
+            border: 1px solid $lmgray;
+            border-left: 0;
+        }
+
+        .warning {
+            @include border-radius($border-radius-default);
+            text-align: center;
+            margin-top: 15px;
+            color: $orange;
+            border: 1px solid $orange;
+            padding: 5px 10px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+    }
+
+    .select_company {
+
+        input[type=radio] {
+            display: none;
+        }
+
+        span {
+            color: $dgray;
+            font-size: 14px;
+        }
+
+        .create_challenge_title {
+            margin-bottom: 50px;
+        }
+
+        .company {
+            @include border-radius(3px);
+
+            border: 1px solid $lmgray;
+            margin-bottom: 10px;
+            padding: 20px 25px;
+
+            p {
+                font-weight: bold;
+                font-size: 15px;
+            }
+        }
+
+        .selected_company {
+            border: 1px solid $green;
+            @include border-radius($border-radius-default);
+
+            p {
+                color: $dblue;
+            }
+        }
+    }
+
+    .select-players {
+
+        .add-new {
+            font-size: 15px;
+            margin-top: 22px;
+            text-align: right;
+        }
+
+        .checkboxes {
+            margin: 20px 0;
+        }
+
+        .checkbox-container {
+            margin: 15px 0;
+            text-align: center;
+
+            label {
+                display: inline-block;
+            }
+        }
+
+        .form input[type=text] {
+            background-color: #fff;
+
+        }
+    }
+
+    .select-participants {
+        margin-top: 55px;
+
+        h4 {
+            font-size: 0.8em;
+        }
+
+        .select-btn-container {
+            display: inline-block;
+            float: right;
+        }
+
+        .invite-grid {
+            text-align: center;
+        }
+
+        .fgrid {
+            display: flex;
+            vertical-align: middle;
+
+            >.col-12 {
+                flex: 1200;
+            }
+        }
+
+        .col {
+            flex: 100;
+        }
+
+        .margin-auto-vertical {
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+
+        &.empty-state {
+            .invite-grid {
+                display: none;
+            }
+
+            .add-by-email {
+                display: block;
+            }
+        }
+
+
+        .invite-list {
+            font-size: 0.8em;
+            padding: 5px 0;
+            max-height: 500px;
+            overflow: auto;
+
+            a {
+                color: $dblue;
+            }
+
+            .button-box {
+                @include border-radius($border-radius-default);
+                padding: 5px 20px;
+                text-transform: uppercase;
+                font-weight: bold;
+                margin-right: 5px;
+            }
+
+            .invited-box {
+                background-color: $green;
+                color: white;
+            }
+
+            .playercard { width: 100%; }
+
+            .select-box { background-color: $lmblue; }
+
+            & > .active .on-inactive { display: none; }
+            & > :not(.active) .on-active { display: none; }
+            & > .hidden { display: none; }
+
+            li {
+                padding: 10px 0;
+                border-bottom: 1px solid $lmgray;
+            }
+
+            li.active .card-small strong {
+                color: $green;
+            }
+        }
+
+        .add-invites, .cta_bulk_invite_add {
+            text-transform: none;
+        }
+
+        .form {
+
+            label {
+                    margin: 0;
+            }
+
+            input {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+        }
+
+        .invite-form {
+            // max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+
+            a.button {
+                display: inline-block;
+            }
+
+            li {
+                display: block;
+            }
+
+            .search {
+                width: 100%;
+                padding: 5px 0;
+
+                input {
+                    width: 100%;
+                }
+            }
+
+            .department, .position {
+                display: inline-block;
+                width: 49.4%;
+            }
+
+            .department {
+                margin-right: 10px;
+            }
+
+            .right { justify-content: flex-end; }
+            .center { justify-content: space-around; }
+            .add-new { flex: 1; }
+
+            .select-options {
+                float: right;
+                font-size: 0.8em;
+                text-decoration: underline;
+                padding: 5px 0;
+                margin: 15px 0 20px 0;
+
+                .none, .all {
+                    margin-left: 5px;
+                    color: $lblue;
+                }
+            }
+
+        }
+
+        /* --- CREATE NEW CHALLENGE - INVITE --- */
+
+        .bulk_invite_info {
+            @include border-radius($border-radius-default);
+
+            padding: 20px;
+            border: 1px solid $mgray;
+            width: 85%;
+            line-height: 1.3em;
+            font-size: 14px;
+            text-align: left;
+            margin: 40px auto -20px auto;
+            display: none;
+
+            &.error {
+                border-left: 5px solid $red;
+            }
+
+            &.success {
+                border-left: 5px solid $green;
+            }
+        }
+
+        .cnc_invitations {
+            padding: 50px 0 0 0;
+
+            .invitation_form {
+                font-size: 14px;
+
+                .inv_row {
+                    margin-bottom: 20px;
+                    position: relative;
+
+                    .cta_inv_delete {
+                        @include border-radius(30px);
+                        @include transition($trans-fast);
+
+                        color: $mgray;
+                        display: none;
+                        padding: 10px;
+                        position: absolute;
+                        top: 30px;
+                        right: -35px;
+                        text-align: center;
+
+                        &:hover {
+                            color: $red;
+                        }
+
+                    }
+                }
+
+                .inv_input {
+                    box-sizing: border-box;
+                    display: inline-block;
+                    width: 33.333333%;
+                    margin: 0;
+                    padding: 0 10px 0 0;
+                    vertical-align: top;
+                    text-align: left;
+
+                    label {
+                        display: block;
+                        font-weight: bold;
+                        text-align: left;
+                        margin-bottom: 10px;
+
+                        sup {
+                            color: $red;
+                        }
+                    }
+
+                    input {
+                        @include border-radius($border-radius-default);
+
+                        border: 1px solid $mgray;
+                        display: block;
+                        padding: 12px 20px;
+                        font-size: 14px;
+                        width: 100%;
+                    }
+
+                    p.error_msg {
+                        display: none;
+                    }
+
+                    &:nth-of-type(1) {
+                        width: 46%;
+                    }
+
+                    &:nth-of-type(2), &:nth-of-type(3) {
+                        width: 27%;
+                    }
+
+                    &:last-of-type {
+                        padding: 0;
+                    }
+
+
+                }
+            }
+
+            .cnc_inv_controls {
+                text-align: left;
+                font-size: 14px;
+
+                p {
+                    display: inline-block;
+                    float: right;
+                    text-align: right;
+                    width: 50%;
+                }
+
+            }
+
+            .cnc_inv_end {
+                text-align: center;
+                margin-top: 50px;
+
+                p {
+                    margin-top: 20px;
+                }
+
+                .cta_dont_invite {
+                    font-size: 13px;
+                }
+            }
+        }
+
+        // CHANGES IN FORM FOR BULK INVITE
+        .cnc_inv_bulk {
+
+            .invitation_form  .inv_input {
+                width: 100% !important;
+
+                textarea {
+                    @include border-radius($border-radius-default);
+
+                    border: 1px solid $dgray;
+                    display: block;
+                    padding: 12px 20px;
+                    font-size: 14px;
+                    resize: vertical;
+                    width: 100%;
+                    min-height: 100px;
+                }
+            }
+        }
+
+        .cta_invite {
+            display: none;
+        }
+
+        ul.selected-players {
+            overflow: auto;
+
+            li {
+                @include border-radius($border-radius-default);
+
+                background-color: $llblue;
+                display: inline-block;
+                padding: 5px 10px;
+                margin: 5px;
+                font-size: 13px;
+
+                a.remove-invite {
+                    color: $dgray;
+                    margin-left: 5px;
+
+                    &:hover {
+                        color: $ddgray;
+                    }
+                }
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+/* ===========================================================================
+   Media Queries
+ =========================================================================== */
+
+
+
+//  col-xs
+@media screen and (max-width: 767px) {
+
+
+    footer {
+        text-align: center;
+        padding: 50px 0;
+
+        h4 {
+            margin: 30px 0 5px 0;
+        }
+
+        .social-icons {
+            img {
+                float: none;
+                margin: 20px 20px 10px 20px;
+            }
+        }
+    }
+
+
+    .navbar-default {
+        .navbar-nav {
+            padding: 0;
+            margin: 0;
+        }
+
+        .navbar-nav > li {
+            padding: 0;
+        }
+
+        .navbar-nav > li.active {
+            display: none;
+        }
+
+        .navbar-nav > li > a {
+            padding: 5px 15px;
+        }
+
+        .navbar-nav > li > a > .icon-container {
+            width: 24px;
+            text-align: center;
+            float: left;
+        }
+
+        .navbar-nav > li > .menu-without-a {
+            padding: 10px 15px;
+        }
+
+        .navbar-toggle {
+            color: $dgray;
+            background-color: $lgray;
+            @include border-radius(5px);
+
+            &:hover {
+                color: $dgray;
+                background-color: $lgray;
+                opacity: 0.6;
+            }
+        }
+    }
+
+    .nav_userpic {
+        display: none;
+    }
+
+
+    .navbar-header {
+        font-weight: 600;
+
+        .navbar_item {
+            display: block;
+            float: none;
+            height: 40px;
+        }
+    }
+
+    .navbar-brand {
+        padding: 15px;
+        font-size: 15px;
+
+        img {
+           display: inline-block;
+           vertical-align: middle;
+       }
+    }
+
+    .header-nav {
+        height: 45px;
+    }
+
+    .o-wrapper {
+        padding-top: 45px !important;
+    }
+
+    .header-nav .header-nav-sm {
+        display: none;
+    }
+
+    .header-nav .header-nav-xs {
+        display: block;
+
+        .notif-default {
+            strong {
+                position: relative;
+            }
+
+            .notif-number {
+                position: absolute;
+                top: -1px;
+                left: 4px;
+            }
+        }
+
+        .wishlist-default {
+            strong {
+                position: relative;
+            }
+        }
+    }
+
+    .header-nav .container > ul {
+        display: none;
+    }
+
+    .karmabar{
+
+        .karma-icon-container{
+            top: 10%;
+            height: 45px;
+            width: 45px;
+
+            i{
+                font-size: 30px;
+            }
+        }
+        .karma-point-container{
+            padding-left: 65px;
+
+            .karma-point{
+                width: 40px;
+
+                i{
+                    font-size: 25px;
+                }
+            }
+        }
+    }
+}
+
+
+//  col-sm
+@media screen and (min-width: 768px) and (max-width: 991px) {
+
+    nav {
+        .h2 {
+            margin-left: 5px;
+        }
+    }
+
+    .navbar-brand {
+        display: none;
+    }
+
+    .navbar-default {
+        .navbar-nav > li {
+            padding: 0 15px;
+        }
+    }
+
+    .header-nav {
+        .header-nav-xs, .mobile_app_header {
+            display: none;
+        }
+    }
+
+    .header-nav .container > ul {
+        display: block;
+    }
+
+    .karmabar{
+
+        .karma-icon-container{
+            top: 10%;
+            height: 45px;
+            width: 45px;
+
+            i{
+                font-size: 30px;
+            }
+        }
+        .karma-point-container{
+            padding-left: 65px;
+
+            .karma-point{
+                width: 40px;
+
+                i{
+                    font-size: 25px;
+                }
+            }
+        }
+    }
+}
+
+//  col-md
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+    .navbar-brand {
+        display: none;
+    }
+
+    .navbar-default {
+        .navbar-nav > li {
+            padding: 0 20px;
+        }
+    }
+
+    .header-nav {
+        .header-nav-xs, .mobile_app_header {
+            display: none;
+        }
+    }
+
+    .header-nav .container > ul {
+        display: block;
+    }
+}
+
+//  col-lg
+@media screen and (min-width: 1200px) {
+    .navbar-brand {
+        display: none;
+    }
+
+    .header-nav {
+        .header-nav-xs, .mobile_app_header {
+            display: none;
+        }
+    }
+
+    .header-nav .container > ul {
+        display: block;
+    }
+}
+
+/*
+    Nav tabs
+*/
+.nav-tabs {
+    font-family: "Open Sans Condensed","Arial Narrow","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 1.11em;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: 1px solid $lmgray;
+}
+
+.nav-tabs > li.active > a {
+    border-top: 1px solid $lmgray;
+    border-left: 1px solid $lmgray;
+    border-right: 1px solid $lmgray;
+    border-bottom: 1px solid white;
+
+    &:hover {
+        border-color: $lmgray $lmgray white $lmgray;
+        background-color: white;
+        opacity: inherit;
+    }
+}
+
+.nav-tabs > li > a {
+    padding: 20px 30px;
+
+    &:hover {
+        background: none;
+        border: 1px solid rgba(0,0,0,0);
+        opacity: 0.6;
+    }
+}
+
+.playercard.card-small span.only-name {
+    margin-top: 1.2rem;
+    font-family: $font-normal;
+    color: $lblue;
+    text-transform: none;
+    font-size: 13px;
+    float: left;
+}
+
+.card-small {
+    display: inline-block;
+    vertical-align: middle;
+
+    img, span {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    img {
+        &.right { float: right; }
+
+        &:not(.right) {
+            float: left;
+            margin-right: 10px;
+        }
+
+        &:not(.userpic) {
+            width:40px;
+            height: 40px;
+        }
+    }
+
+    small { padding-top: 2px; }
+
+    figure {
+        padding: 0 !important;
+        vertical-align: 1px;
+        font-size: 0.75em;
+        margin-right: 0px;
+    }
+
+    i {
+        font-size: 2.5em;
+        height: 2.5rem;
+        vertical-align: middle;
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+    .magic-hat-gold {
+        width: 43px;
+        margin-right: 10px;
+    }
+}
+
+.card-big {
+    text-align: center;
+
+    .userpic {
+        width: 95px;
+    }
+
+    .h1 {
+        margin: 10px 0 3px 0;
+
+        em {font-weight:400;}
+    }
+
+    i { display: inline-block; }
+
+    span { display:block; }
+}
+
+.with-box-shadow{
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.5);
+}
+
+/*
+ * Rotation
+ */
+@-webkit-keyframes rotating /* Safari and Chrome */ {
+    from {
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@keyframes rotating {
+    from {
+        -ms-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -ms-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+.rotating {
+    -webkit-animation: rotating 2s linear infinite;
+    -moz-animation: rotating 2s linear infinite;
+    -ms-animation: rotating 2s linear infinite;
+    -o-animation: rotating 2s linear infinite;
+    animation: rotating 2s linear infinite;
+}
+
+/*
+ * Image loader logo pulse
+ */
+@keyframes logo-pulse {
+    0% {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+
+    50% {
+        -webkit-transform: scale3d(1.25, 1.25, 1.25);
+        transform: scale3d(1.25, 1.25, 1.25);
+    }
+
+    100% {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
